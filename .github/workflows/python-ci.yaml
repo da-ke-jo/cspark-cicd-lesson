@@ -24,7 +24,7 @@ jobs:
       - name: Run Tests
         run: pytest --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
       - name: Build
-        working-directory: my_package/my_package
+        working-directory: my_package
         run: poetry build
 
   PublishPackage:
@@ -43,7 +43,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
       - name: Publish
-        working-directory: my_package/mypackage
+        working-directory: my_package
         run: |
           poetry config repositories.cspark https://gitlab.com/api/v4/projects/61532089/packages/pypi
           poetry config http-basic.cspark cspark_user ${{ secrets.PYPI_TOKEN }}
